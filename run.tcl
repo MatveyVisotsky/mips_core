@@ -1,6 +1,3 @@
-###################     ModelSim TCL     ########################
-###################  Created by Zhiwei.Liu   #######################
- 
 ##### Create the Project/Lib #####
 # vlib work
 # map the library
