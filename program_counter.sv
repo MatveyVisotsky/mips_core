@@ -2,11 +2,11 @@ module program_counter
 (
 	input 				clk_i			,
 	input				rst_n_i			,
-	input				pc_new_value_i	,
-	output				pc_value_o		
+	input	[15:0]		pc_new_value_i	,
+	output	[15:0]		pc_value_o		
 );
 
-reg pc_r;
+reg [15:0] pc_r;
 
 always_ff@(posedge clk_i, negedge rst_n_i)
 begin

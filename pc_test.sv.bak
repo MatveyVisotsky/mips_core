@@ -1,0 +1,37 @@
+module pc_test;
+
+logic clk_i					;
+logic rst_n_i				;	
+logic [15:0] pc_new_value_i	;	
+logic [15:0] pc_value_o		;	
+
+program_counter dut(.*);
+
+int counter;
+parameter OPN = 100;
+initial begin 
+	clk_i <= 0;
+	forever #5 clk_i <= ~clk_i;
+end 
+
+initial begin 
+	counter = 0;
+	rst_n_i = 0;
+	pc_new_value_i = $urandom();
+	#12 rst_n_i <= 1;
+	@(posedge clk_i);
+	
+	repeat(OPN) begin
+		counter++;	
+		pc_new_value_i = $urandom();
+		@(posedge clk_i);
+		if(pc_value_o != pc_new_value_i)
+			break;
+	end 
+	if(counter == OPN)
+		$display("PC test finished succesfully");
+	else 
+		$display("PC test failed !!!");
+		
+	#1 $finish;
+end 
