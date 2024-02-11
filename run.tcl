@@ -12,7 +12,6 @@ if { $test == 1 } {
 ##### Compile the verilog #####
 vlog pc_test.sv program_counter.sv
 
- 
 ##### Start Simulation #####
 vsim work.pc_test work.program_counter
 add wave -binary clk_i
