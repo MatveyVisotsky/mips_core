@@ -6,7 +6,8 @@
 puts "Choose the block test"
 puts "1 - PC"
 puts "2 - Instruction memory"
-gets stdin $test 
+puts "3 - Regfile"
+gets stdin test 
 
 if { $test == 1 } { 
 ##### Compile the verilog #####
@@ -24,6 +25,12 @@ run -all
 vlog instruction_memory.sv insruction_memory_test.sv
 
 vsim work.instruction_memory work.insruction_memory_test
+
+run -all
+} elseif { $test == 3 } {
+vlog regfile.sv regfile_test.sv
+
+vsim work.regfile work.regfile_test
 
 run -all
 } else {
